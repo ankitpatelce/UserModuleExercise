@@ -1,7 +1,9 @@
 package com.example.electronic.store.services;
 
+import com.example.electronic.store.dtos.PageableResponse;
 import com.example.electronic.store.dtos.UserDto;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -13,10 +15,11 @@ public interface UserService {
     UserDto updateUser(UserDto userDto, String userId);
 
     //delete
-    void deleteUser(String userId);
+    void deleteUser(String userId) throws IOException;
 
     //get all user
-    List<UserDto> getAllUser();
+    //List<UserDto> getAllUser(int pageNumber,int pageSize,String sortBy,String sortDirection);
+    PageableResponse<UserDto> getAllUser(int pageNumber, int pageSize, String sortBy, String sortDirection);
 
     //get single user by userid
     UserDto getUserById(String userId);
